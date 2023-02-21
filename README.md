@@ -1,4 +1,4 @@
-# Project Name
+# Bernard Boys Mafia: Syndicate Network
 
 [![Project Logo](/images/logo.png)](https://github.com/username/project)
 
