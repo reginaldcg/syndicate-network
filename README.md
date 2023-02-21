@@ -1,1 +1,15 @@
-# Syndicate-Network
+# Project Name
+
+[![Project Logo](/images/logo.png)](https://github.com/username/project)
+
+A brief introduction to the project and what it does.
+
+## Table of Contents
+
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
