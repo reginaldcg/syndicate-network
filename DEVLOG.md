@@ -8,6 +8,14 @@
 		|-- No Data Collection
 		|-- Modern UI Design
 
+## Tech Stack
+	Chrome Extension
+	|-- Content Creation and Distribution
+	|-- Task Reward
+	|-- Paper Money
+
+---
+
 ## Niche Collection
 Take inspiration from the below niches, ya´ bithc.
 
@@ -52,3 +60,100 @@ Take inspiration from the below niches, ya´ bithc.
 
 ### ⚓ Prediction Market
 > A browser extension that gamifies the prediction market process by allowing users to make predictions about the future of the Cardano blockchain and rewarding them with tokens for accurate predictions.
+
+---
+
+## Tech Stack (continued...)
+
+- React for the UI
+- Redux for state management
+- TypeScript for type checking
+- Web3.js for interacting with the Cardano blockchain
+- OpenAI API for language processing
+- Firebase for data storage and authentication
+- Material-UI for UI components
+
+Setting up Firebase Authentication
+```ts
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
+const firebaseConfig = {
+  // Your Firebase configuration here
+};
+
+firebase.initializeApp(firebaseConfig);
+
+// Sign in with Google
+const provider = new firebase.auth.GoogleAuthProvider();
+export const signInWithGoogle = () => {
+  firebase.auth().signInWithPopup(provider);
+};
+
+// Sign out
+export const signOut = () => {
+  firebase.auth().signOut();
+};
+```
+
+Retrieving Cardano wallet balance using Web3.js
+```ts
+import Web3 from 'web3';
+import { CARDANO_NETWORK, BLOCKFROST_API_KEY } from '../constants';
+
+const web3 = new Web3(new Web3.providers.HttpProvider(CARDANO_NETWORK));
+
+export const getBalance = async (address: string) => {
+  const balanceInLovelace = await web3.eth.getBalance(address);
+  const balanceInADA = web3.utils.fromWei(balanceInLovelace, 'ether');
+  return balanceInADA;
+};
+```
+
+Using OpenAI API to generate content
+```ts
+import OpenAI from 'openai-api';
+
+const openai = new OpenAI(process.env.OPENAI_API_KEY);
+
+export const generateText = async (prompt: string) => {
+  const response = await openai.complete({
+    engine: 'text-davinci-002',
+    prompt,
+    maxTokens: 1024,
+    n: 1,
+    stop: '\n',
+  });
+  return response.choices[0].text.trim();
+};
+```
+
+Creating a simulated trading environment
+```ts
+import { ADA_PRICE } from '../constants';
+
+const startingBalance = 1000000; // Amount of play money to start with
+let balance = startingBalance;
+
+const buyADA = (quantity: number) => {
+  const cost = ADA_PRICE * quantity;
+  if (cost > balance) {
+    throw new Error('Insufficient funds');
+  }
+  balance -= cost;
+  // Add ADA to user's simulated wallet
+};
+
+const sellADA = (quantity: number) => {
+  const salePrice = ADA_PRICE * quantity;
+  balance += salePrice;
+  // Remove ADA from user's simulated wallet
+};
+```
+
+**!** Constants defined in a separate file. **!**
+> `CARDANO_NETWORK`
+>
+> `BLOCKFROST_API_KEY`
+>
+> `ADA_PRICE`
